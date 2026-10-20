@@ -37,7 +37,7 @@ See [DEVELOPING.md](DEVELOPING.md). The `source/` folders contain the mod compon
 - **cranebeaker and the COOP Anything contributors**: the [COOP Anything playbook](https://github.com/cranebeaker/coop-anything), inspiration and repository presentation references: [Deus Ex](https://github.com/cranebeaker/deus-ex-coop), [Fallout: New Vegas](https://github.com/cranebeaker/fnv-coop), [Ocarina of Time](https://github.com/cranebeaker/ocarina-coop), [Dungeon Keeper](https://github.com/cranebeaker/dungeon-keeper-coop), and [S.T.A.L.K.E.R.](https://github.com/cranebeaker/stalker-soc-coop-fixes). This is an independent personal project, with no claim of official membership or endorsement.
 - **Supergiant Games**: Hades and its game assets. Players must supply their own copy.
 - **Lua authors, Electronic Arts/EASTL, The Forge contributors and other upstream dependency authors**: see the preserved notices in [`licenses/`](licenses/).
-- **Yarmungandr**: personal customization and testing direction, with AI-assisted implementation and documentation using ChatGPT/Codex.
+- **Yarmungandr**: I mean, I did something, rigth lol
 - **Parsec**: optional remote input and streaming software, obtained separately.
 
 ## License
