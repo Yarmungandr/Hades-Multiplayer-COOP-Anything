@@ -1,0 +1,114 @@
+--
+-- Copyright (c) Uladzislau Nikalayevich <thenormalnij@gmail.com>. All rights reserved.
+-- Licensed under the MIT license. See LICENSE file in the project root for details.
+--
+
+---@type HookUtils
+local HookUtils = ModRequire "HookUtils.lua"
+---@type CoopPlayers
+local CoopPlayers = ModRequire "CoopPlayers.lua"
+---@type SecondPlayerUi
+local SecondPlayerUi = ModRequire "SecondPlayerUI.lua"
+---@type HeroContext
+local HeroContext = ModRequire "HeroContext.lua"
+---@type CoopCamera
+local CoopCamera = ModRequire "CoopCamera.lua"
+---@type FreezeHooks
+local FreezeHooks = ModRequire "hooks/FreezeHooks.lua"
+---@type RunHooks
+local RunHooks = ModRequire "hooks/RunHooks.lua"
+---@type MenuHooks
+local MenuHooks = ModRequire "hooks/MenuHooks.lua"
+---@type SaveHooks
+local SaveHooks = ModRequire "hooks/SaveHooks.lua"
+---@type EnemyAiHooks
+local EnemyAiHooks = ModRequire "hooks/EnemyAiHooks.lua"
+---@type LootHooks
+local LootHooks = ModRequire "hooks/LootHooks.lua"
+---@type UIHooks
+local UIHooks = ModRequire "hooks/UIHooks.lua"
+---@type VulnerabilityHooks
+local VulnerabilityHooks = ModRequire "hooks/VulnerabilityHooks.lua"
+---@type ResourceLoadingHooks
+local ResourceLoadingHooks = ModRequire "hooks/ResourceLoadingHooks.lua"
+---@type ILootDelivery
+local LootDelivery = ModRequire "loot/LootInterface.lua"
+
+ModRequire "hooks/DamageHooks.lua"
+ModRequire "hooks/UseHooks.lua"
+ModRequire "hooks/ControlHooks.lua"
+ModRequire "hooks/MovementHooks.lua"
+ModRequire "hooks/WeaponHooks.lua"
+ModRequire "EmergencyRespawn.lua"
+local CooldownHooks = ModRequire "hooks/CooldownHooks.lua"
+local HealingHooks = ModRequire "hooks/HealingHooks.lua"
+local MoneyHooks = ModRequire "hooks/MoneyHooks.lua"
+
+local hooksInited = false
+local function TryInstalBasicHooks()
+    if hooksInited then
+        return
+    end
+
+    hooksInited = true
+
+    -- Mod init runs before Content/Scripts/Main.lua. Native event registrars
+    -- above must be wrapped early; Lua gameplay functions only exist here,
+    -- after the stock scripts have loaded and before the first world object.
+    CooldownHooks.InitHooks()
+    HealingHooks.InitHooks()
+    MoneyHooks.InitHooks()
+
+    -- Fixes crash on loading when the game truing add last stand to a second player
+    ScreenAnchors = {}
+
+    EnemyAiHooks.InitHooks()
+    SaveHooks.InitHooks()
+    CoopCamera.InitHooks()
+    FreezeHooks.InitHooks()
+    RunHooks.InitHooks()
+    MenuHooks.InitHooks()
+    --PactDoorFix.InitHooks()
+    UIHooks.InitHooks()
+    CoopPlayers.CoopInit()
+    LootHooks.InitHooks()
+    VulnerabilityHooks.InitHooks()
+    ResourceLoadingHooks.InitHooks()
+    LootDelivery.InitHooks()
+    ModRequire("CoopShop.lua").InitHooks()
+end
+
+OnPreThingCreation
+{
+    TryInstalBasicHooks
+}
+
+OnAnyLoad {
+    function(triggerArgs)
+        local mapName = triggerArgs.name
+
+        if mapName == "RoomPreRun" then
+            HookUtils.onPostFunctionOnce("DeathAreaRoomTransition", function()
+                if not HeroContext.GetDefaultHero() then
+                    HeroContext.InitRunHook()
+                end
+                CoopPlayers.SetMainHero(HeroContext.GetDefaultHero())
+                CoopPlayers.UpdateMainHero()
+                for playerId = 2, CoopPlayers.GetPlayersCount() do
+                    CoopPlayers.InitCoopUnit(playerId)
+                end
+                SecondPlayerUi.Refresh()
+            end)
+        end
+    end
+}
+
+OnMenuOpened {
+    "MainMenuScreen",
+    function(triggerArgs)
+        SetConfigOption { Name = "AllowControlHotSwap", Value = true }
+        EnableGamepadInput()
+        EnableKeyboardMenuInput()
+    end
+}
+

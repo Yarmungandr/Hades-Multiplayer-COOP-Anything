@@ -1,0 +1,103 @@
+{
+  HelpTexts = [
+    {
+      lang = "en"
+      Texts = [
+        {
+          Id = "MainMenuAPI_SelectGamemode"
+          DisplayName = "Select gamemode"
+        }
+      ]
+    },
+    {
+      lang = "ru"
+      Texts = [
+        {
+          Id = "MainMenuAPI_SelectGamemode"
+          DisplayName = "Режим игры"
+        }
+      ]
+    },
+    {
+      lang = "de"
+      Texts = [
+        {
+          Id = "MainMenuAPI_SelectGamemode"
+          DisplayName = "Spielmodus"
+        }
+      ]
+    },
+    {
+      lang = "es"
+      Texts = [
+        {
+          Id = "MainMenuAPI_SelectGamemode"
+          DisplayName = "Modo de juego"
+        }
+      ]
+    },
+    {
+      lang = "fr"
+      Texts = [
+        {
+          Id = "MainMenuAPI_SelectGamemode"
+          DisplayName = "Mode de jeu"
+        }
+      ]
+    },
+    {
+      lang = "it"
+      Texts = [
+        {
+          Id = "MainMenuAPI_SelectGamemode"
+          DisplayName = "Modalità di gioco"
+        }
+      ]
+    },
+    {
+      lang = "pl"
+      Texts = [
+        {
+          Id = "MainMenuAPI_SelectGamemode"
+          DisplayName = "Tryb gry"
+        }
+      ]
+    },
+    {
+      lang = "pt-BR"
+      Texts = [
+        {
+          Id = "MainMenuAPI_SelectGamemode"
+          DisplayName = "Select gamemode"
+        }
+      ]
+    },
+    {
+      lang = "ja"
+      Texts = [
+        {
+          Id = "MainMenuAPI_SelectGamemode"
+          DisplayName = "ゲームモード"
+        }
+      ]
+    },
+    {
+      lang = "zh-CN"
+      Texts = [
+        {
+          Id = "MainMenuAPI_SelectGamemode"
+          DisplayName = "游戏模式"
+        }
+      ]
+    },
+    {
+      lang = "ko"
+      Texts = [
+        {
+          Id = "MainMenuAPI_SelectGamemode"
+          DisplayName = "게임 모드"
+        }
+      ]
+    }
+  ]
+}

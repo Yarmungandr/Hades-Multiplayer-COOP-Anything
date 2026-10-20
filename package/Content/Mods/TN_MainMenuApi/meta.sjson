@@ -1,0 +1,9 @@
+{
+	Name = "Main menu API"
+	Library = "HadesMainMenuApiLib.dll"
+	Priority = 10000
+	Author = "Uladzislau 'TheNormalnij' Nikalayevich"
+	Localization = [
+		"Localizations.sjson"
+	]
+}
