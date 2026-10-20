@@ -23,9 +23,11 @@ An unofficial, experimental Hades co-op extension for up to four local players, 
 
 Experimental personal build, based on the October 20, 2026 v3 work. Lua regression tests check isolated behavior with simulated game functions. They do **not** establish that a full run, every encounter, every controller configuration or every storefront works.
 
-The latest startup/gold and recovery changes have not been confirmed in a real multiplayer session. The native recovery hook targets the Steam engine layout and may not activate on other builds. Recovery cannot recreate rewards already lost; use it before the remaining players finish combat. Crashes, progression problems and balancing issues may still occur.
+The latest startup/gold and recovery changes have not been confirmed in a real multiplayer session. The native recovery hook targets the Steam engine layout and may not activate on other builds. Recovery cannot recreate rewards already lost; use it before the remaining players finish combat. Crashes, progression problems and specially balancing issues may still occur, as it's beeen said the main focus here is funsies and toomfoolery, no calculated changes.
 
 This is local shared-screen co-op streamed through Parsec when needed. It does not implement independent network clients, Steam invites or a relay. No Hades game files, saves, personal paths or Parsec binaries are distributed here.
+
+As a personal recomendation, when playing with 3 or 4 people, use the Inferno mode, it'll be more fair. :)
 
 ## Source, tests and customization
 
